@@ -1,0 +1,17 @@
+version: "3.4"
+
+services:
+  pygwalker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pygwalkerv1
+    container_name: pygwalkerv1c
+    command: python3 -m jupyterlab --allow-root --ip=0.0.0.0 --port=8801
+    environment:
+      - ASR_MODEL=medium
+    ports:
+      - "8859:8859"
+      - "8858:8858"
+    volumes:
+      - ./:/root/pygwalker
